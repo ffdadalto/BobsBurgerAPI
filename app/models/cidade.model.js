@@ -3,7 +3,7 @@ const db = require("../models");
 
 module.exports = (sequelize, Sequelize) => {
     const Cidade = sequelize.define(
-        "Cidade", {
+        "cidade", {
             nome: { type: DataTypes.STRING, allowNull: false },
             ativo: { type: DataTypes.BOOLEAN },
             dataCadastro: { type: DataTypes.DATE },

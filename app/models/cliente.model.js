@@ -3,7 +3,7 @@ const db = require("../models");
 
 module.exports = (sequelize, Sequelize) => {
     const Cliente = sequelize.define(
-        "Cliente", {
+        "cliente", {
             nome: { type: DataTypes.STRING, allowNull: false },
             telefone: { type: DataTypes.STRING, allowNull: false },
             cep: { type: DataTypes.STRING },

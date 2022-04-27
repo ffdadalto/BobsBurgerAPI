@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
     const Pedido = sequelize.define(
-        "Pedido", {
+        "pedido", {
             nome: { type: DataTypes.STRING, allowNull: false },
             dataCadastro: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
         }, {

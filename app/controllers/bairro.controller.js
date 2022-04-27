@@ -20,7 +20,7 @@ exports.create = (req, res) => {
         nome: req.body.nome,
         ativo: req.body.ativo,
         dataCadastro: utilitarios.dateTimeNow(),
-        CidadeId: req.body.Cidade.id
+        cidadeId: req.body.cidadeId
     };
     // Salva o bairro no banco de dados
     Bairro.create(bairro)
@@ -72,6 +72,7 @@ exports.findOne = (req, res) => {
 // Atualiza um bairro pelo id passado por parametro
 exports.update = (req, res) => {
     const id = req.params.id;
+
     Bairro.update(req.body, {
             where: { id: id },
         })
