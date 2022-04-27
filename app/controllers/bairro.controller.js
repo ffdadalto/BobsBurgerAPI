@@ -19,7 +19,8 @@ exports.create = (req, res) => {
     const bairro = {
         nome: req.body.nome,
         ativo: req.body.ativo,
-        dataCadastro: utilitarios.dateTimeNow()
+        dataCadastro: utilitarios.dateTimeNow(),
+        CidadeId: req.body.Cidade.id
     };
     // Salva o bairro no banco de dados
     Bairro.create(bairro)
