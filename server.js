@@ -15,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 
 require("./app/routes/cliente.routes")(app);
 require("./app/routes/pedido.routes")(app);
+require("./app/routes/bairro.routes")(app);
+require("./app/routes/cidade.routes")(app);
 
 // Sincroniza o DB com os models
 const db = require("./app/models");
