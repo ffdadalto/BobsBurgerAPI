@@ -10,8 +10,6 @@ module.exports = (sequelize, Sequelize) => {
             endereco: { type: DataTypes.STRING },
             numero: { type: DataTypes.STRING },
             complemento: { type: DataTypes.STRING },
-            bairro: { type: DataTypes.STRING },
-            cidade: { type: DataTypes.STRING },
             ativo: { type: DataTypes.BOOLEAN },
             dataCadastro: { type: DataTypes.DATE },
         }, {

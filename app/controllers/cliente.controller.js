@@ -23,8 +23,7 @@ exports.create = (req, res) => {
         endereco: req.body.endereco,
         numero: req.body.numero,
         complemento: req.body.complemento,
-        bairro: req.body.bairro,
-        cidade: req.body.cidade,
+        bairroId: req.body.bairroId,
         ativo: req.body.ativo,
         dataCadastro: utilitarios.dateTimeNow()
     };
@@ -49,7 +48,10 @@ exports.findAll = (req, res) => {
             },
         } :
         null;
-    Cliente.findAll({ where: condition, include: { all: true } })
+    Cliente.findAll({
+            where: condition,
+            include: { all: true, nested: true } // Trás todas as relações, inclusive as dos filhos
+        })
         .then((data) => {
             res.send(data);
         })

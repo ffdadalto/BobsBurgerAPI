@@ -43,7 +43,7 @@ exports.findAll = (req, res) => {
             },
         } :
         null;
-    Bairro.findAll({ where: condition, include: { all: true } })
+    Bairro.findAll({ where: condition, include: [{ model: db.cidade }] })
         .then((data) => {
             res.send(data);
         })
