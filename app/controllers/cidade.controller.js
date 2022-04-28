@@ -42,7 +42,13 @@ exports.findAll = (req, res) => {
             },
         } :
         null;
-    Cidade.findAll({ where: condition, include: { all: true } })
+    Cidade.findAll({
+            where: condition,
+            include: { all: true },
+            order: [
+                ['nome', 'ASC'], // Ordena pelo nome
+            ],
+        })
         .then((data) => {
             res.send(data);
         })
@@ -57,7 +63,7 @@ exports.findAll = (req, res) => {
 // Retorna um cidade pelo id passado por parametro
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    Cidade.findByPk(id)
+    Cidade.findByPk(id, { include: { all: true, nested: true } })
         .then((data) => {
             res.send(data);
         })
