@@ -9,6 +9,9 @@ module.exports = app => {
     // Obter todos os clientes inativos
     router.get("/inativo", bairro.findAllInactive);
 
+    // Obter todos os nomes dos bairros
+    router.get("/nomes", bairro.getNames);
+
     // Obter um cliente a partir do id
     router.get("/:id", bairro.findOne);
 

@@ -153,3 +153,21 @@ exports.findAllInactive = (req, res) => {
             });
         });
 };
+
+exports.getNames = (req, res) => {
+    Bairro.findAll({
+            attributes: ['nome'],
+            order: [
+                ['nome', 'ASC'], // Ordena pelo nome
+            ],
+        })
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message: err.message ||
+                    "Ocorreu algum erro enquanto tentavamos obter os nomes dos bairros",
+            });
+        });
+};
