@@ -28,6 +28,7 @@ db.sequelize = sequelizeInstance;
 
 db.cliente = require("./cliente.model.js")(sequelizeInstance, Sequelize);
 db.pedido = require("./pedido.model.js")(sequelizeInstance, Sequelize);
+db.item = require("./item.model.js")(sequelizeInstance, Sequelize);
 db.bairro = require("./bairro.model.js")(sequelizeInstance, Sequelize);
 db.cidade = require("./cidade.model.js")(sequelizeInstance, Sequelize);
 
