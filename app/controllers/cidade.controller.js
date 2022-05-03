@@ -35,16 +35,9 @@ exports.create = (req, res) => {
 
 // Retorna todos os cidades do banco de dados
 exports.findAll = (req, res) => {
-    const nome = req.query.nome;
-    var condition = nome ? {
-            nome: {
-                [Op.like]: `%${nome}%`,
-            },
-        } :
-        null;
     Cidade.findAll({
-            where: condition,
-            include: { all: true },
+            include: db.bairro,
+            // include: { all: true }, // trás somente o primeiro filho
             order: [
                 ['nome', 'ASC'], // Ordena pelo nome
             ],
@@ -63,7 +56,7 @@ exports.findAll = (req, res) => {
 // Retorna um cidade pelo id passado por parametro
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    Cidade.findByPk(id, { include: { all: true, nested: true } })
+    Cidade.findByPk(id, { include: db.bairro })
         .then((data) => {
             res.send(data);
         })
@@ -119,15 +112,6 @@ exports.delete = (req, res) => {
 // Deleta todos os cidades
 exports.deleteAll = (req, res) => {
     const ids = req.body;
-
-
-
-    // idsAux.forEach(e => {
-    //     if (e != null && e != '' && typeof(e) === 'number')
-    //         ids.push(e);
-    // });
-    // res.send(idsAux)
-
     Cidade.destroy({
             where: {
                 id: ids

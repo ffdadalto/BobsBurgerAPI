@@ -24,6 +24,7 @@ exports.create = (req, res) => {
         numero: req.body.numero,
         complemento: req.body.complemento,
         bairroId: req.body.bairroId,
+        cidadeId: req.body.cidadeId,
         ativo: req.body.ativo,
         dataCadastro: utilitarios.dateTimeNow()
     };
@@ -41,15 +42,7 @@ exports.create = (req, res) => {
 
 // Retorna todos os clientes do banco de dados
 exports.findAll = (req, res) => {
-    const nome = req.query.nome;
-    var condition = nome ? {
-            nome: {
-                [Op.like]: `%${nome}%`,
-            },
-        } :
-        null;
     Cliente.findAll({
-            where: condition,
             include: { all: true, nested: true } // Trás todas as relações, inclusive as dos filhos
         })
         .then((data) => {

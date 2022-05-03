@@ -39,6 +39,10 @@ db.pedido.belongsTo(db.cliente);
 db.bairro.hasMany(db.cliente);
 db.cliente.belongsTo(db.bairro);
 
+// Relação 1 pra muitos(Cidade e Cliente)
+db.cidade.hasMany(db.cliente);
+db.cliente.belongsTo(db.cidade);
+
 // Relação 1 pra muitos(Cidade e Bairros)
 db.cidade.hasMany(db.bairro);
 db.bairro.belongsTo(db.cidade);

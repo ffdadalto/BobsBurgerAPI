@@ -3,28 +3,28 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    // Criar um novo cliente
+    // Criar um novo bairro
     router.post("/", bairro.create);
 
-    // Obter todos os clientes inativos
+    // Obter todos os bairros inativos
     router.get("/inativo", bairro.findAllInactive);
 
     // Obter todos os nomes dos bairros
     router.get("/nomes", bairro.getNames);
 
-    // Obter um cliente a partir do id
+    // Obter um bairro a partir do id
     router.get("/:id", bairro.findOne);
 
-    // Obter todos os clientes
+    // Obter todos os bairros
     router.get("/", bairro.findAll);
 
-    // Atualiza um cliente pelo id
+    // Atualiza um bairro pelo id
     router.put("/:id", bairro.update);
 
-    // Exclui um cliente a partir do id
+    // Exclui um bairro a partir do id
     router.delete("/:id", bairro.delete);
 
-    // Exclui todos os clientes
+    // Exclui todos os bairros
     router.delete("/", bairro.deleteAll);
 
     app.use('/api/bairro', router);

@@ -58,7 +58,7 @@ exports.findAll = (req, res) => {
 // Retorna um bairro pelo id passado por parametro
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    Bairro.findByPk(id, { include: db.cidade })
+    Bairro.findByPk(id, { include: { all: true, nested: true } })
         .then((data) => {
             res.send(data);
         })
@@ -115,15 +115,6 @@ exports.delete = (req, res) => {
 // Deleta todos os bairros
 exports.deleteAll = (req, res) => {
     const ids = req.body;
-
-
-
-    // idsAux.forEach(e => {
-    //     if (e != null && e != '' && typeof(e) === 'number')
-    //         ids.push(e);
-    // });
-    // res.send(idsAux)
-
     Bairro.destroy({
             where: {
                 id: ids
