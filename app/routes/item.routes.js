@@ -3,25 +3,28 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    // Criar um novo cliente
-    router.post("/", item.create);
-
-    // Obter todos os clientes inativos
+    // Obter todos os items inativos
     router.get("/inativo", item.findAllInactive);
 
-    // Obter um cliente a partir do id
+    // Obter todos os items ativos
+    router.get("/ativo", item.findAllActive);
+
+    // Obter um item a partir do id
     router.get("/:id", item.findOne);
 
-    // Obter todos os clientes
-    router.get("/", item.findAll);
-
-    // Atualiza um cliente pelo id
+    // Atualiza um item pelo id
     router.put("/:id", item.update);
 
-    // Exclui um cliente a partir do id
+    // Exclui um item a partir do id
     router.delete("/:id", item.delete);
 
-    // Exclui todos os clientes
+    // Criar um novo item
+    router.post("/", item.create);
+
+    // Obter todos os items
+    router.get("/", item.findAll);
+
+    // Exclui todos os items
     router.delete("/", item.deleteAll);
 
     app.use('/api/item', router);

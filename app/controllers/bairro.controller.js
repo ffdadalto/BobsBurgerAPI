@@ -162,3 +162,39 @@ exports.getNames = (req, res) => {
             });
         });
 };
+
+// Retorna todos os bairros inativos
+exports.findAllInactive = (req, res) => {
+    Bairro.findAll({
+            where: { ativo: false },
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Ocorreu algum erro enquanto tentavamos obter os bairros inativos."
+            });
+        });
+};
+
+// Retorna todos os bairros ativos
+exports.findAllActive = (req, res) => {
+    Bairro.findAll({
+            where: { ativo: true },
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Ocorreu algum erro enquanto tentavamos obter os bairros ativos."
+            });
+        });
+};

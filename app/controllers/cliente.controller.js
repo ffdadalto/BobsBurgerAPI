@@ -43,7 +43,11 @@ exports.create = (req, res) => {
 // Retorna todos os clientes do banco de dados
 exports.findAll = (req, res) => {
     Cliente.findAll({
-            include: { all: true, nested: true } // Trás todas as relações, inclusive as dos filhos
+            include: { all: true }, // Trás todas as relações, inclusive as dos filhos
+            // include: { all: true, nested: true } // Trás todas as relações, inclusive as dos filhos
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
         })
         .then((data) => {
             res.send(data);
@@ -115,15 +119,6 @@ exports.delete = (req, res) => {
 // Deleta todos os clientes
 exports.deleteAll = (req, res) => {
     const ids = req.body;
-
-
-
-    // idsAux.forEach(e => {
-    //     if (e != null && e != '' && typeof(e) === 'number')
-    //         ids.push(e);
-    // });
-    // res.send(idsAux)
-
     Cliente.destroy({
             where: {
                 id: ids
@@ -143,13 +138,35 @@ exports.deleteAll = (req, res) => {
 
 // Retorna todos os clientes inativos
 exports.findAllInactive = (req, res) => {
-    Cliente.findAll({ where: { ativo: false } })
+    Cliente.findAll({
+            where: { ativo: false },
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message: err.message || "Ocorreu algum erro enquanto tentavamos obter os clientes inativos."
+            });
+        });
+};
+
+exports.findAllActive = (req, res) => {
+    Cliente.findAll({
+            where: { ativo: true },
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Ocorreu algum erro enquanto tentavamos obter os clientes ativos."
             });
         });
 };

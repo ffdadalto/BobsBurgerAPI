@@ -141,3 +141,39 @@ exports.findAllInactive = (req, res) => {
             });
         });
 };
+
+// Retorna todos os cidades inativos
+exports.findAllInactive = (req, res) => {
+    Cidade.findAll({
+            where: { ativo: false },
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Ocorreu algum erro enquanto tentavamos obter os cidades inativos."
+            });
+        });
+};
+
+// Retorna todos os cidades ativos
+exports.findAllActive = (req, res) => {
+    Cidade.findAll({
+            where: { ativo: true },
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Ocorreu algum erro enquanto tentavamos obter os cidades ativos."
+            });
+        });
+};

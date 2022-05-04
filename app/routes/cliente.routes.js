@@ -3,11 +3,11 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    // Criar um novo cliente
-    router.post("/", cliente.create);
+    // Obter todos os clientes inativos
+    router.get("/inativo", cliente.findAllInactive);
 
-    // Obter todos os clientes
-    router.get("/", cliente.findAll);
+    // Obter todos os clientes ativos
+    router.get("/ativo", cliente.findAllActive);
 
     // Obter um cliente a partir do id
     router.get("/:id", cliente.findOne);
@@ -18,11 +18,14 @@ module.exports = app => {
     // Exclui um cliente a partir do id
     router.delete("/:id", cliente.delete);
 
+    // Criar um novo cliente
+    router.post("/", cliente.create);
+
+    // Obter todos os clientes
+    router.get("/", cliente.findAll);
+
     // Exclui todos os clientes
     router.delete("/", cliente.deleteAll);
-
-    // Obter todos os clientes inativos
-    router.get("/inativo", cliente.findAllInactive);
 
     app.use('/api/cliente', router);
 };

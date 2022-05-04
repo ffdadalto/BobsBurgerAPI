@@ -137,3 +137,39 @@ exports.deleteAll = (req, res) => {
             });
         });
 };
+
+// Retorna todos os pedidos inativos
+exports.findAllInactive = (req, res) => {
+    Pedido.findAll({
+            where: { ativo: false },
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Ocorreu algum erro enquanto tentavamos obter os pedidos inativos."
+            });
+        });
+};
+
+// Retorna todos os pedidos ativos
+exports.findAllActive = (req, res) => {
+    Pedido.findAll({
+            where: { ativo: true },
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Ocorreu algum erro enquanto tentavamos obter os pedidos ativos."
+            });
+        });
+};

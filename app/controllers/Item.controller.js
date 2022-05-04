@@ -141,3 +141,39 @@ exports.findAllInactive = (req, res) => {
             });
         });
 };
+
+// Retorna todos os itens inativos
+exports.findAllInactive = (req, res) => {
+    Item.findAll({
+            where: { ativo: false },
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Ocorreu algum erro enquanto tentavamos obter os itens inativos."
+            });
+        });
+};
+
+// Retorna todos os itens ativos
+exports.findAllActive = (req, res) => {
+    Item.findAll({
+            where: { ativo: true },
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Ocorreu algum erro enquanto tentavamos obter os itens ativos."
+            });
+        });
+};
