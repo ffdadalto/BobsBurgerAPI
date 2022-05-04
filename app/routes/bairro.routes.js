@@ -30,7 +30,5 @@ module.exports = app => {
     // Exclui todos os bairros
     router.delete("/", bairro.deleteAll);
 
-
-
     app.use('/api/bairro', router);
 };

@@ -19,6 +19,7 @@ require("./app/routes/item.routes")(app);
 require("./app/routes/cliente.routes")(app);
 require("./app/routes/bairro.routes")(app);
 require("./app/routes/cidade.routes")(app);
+require("./app/routes/configuracao.routes")(app);
 
 // Sincroniza o DB com os models
 const db = require("./app/models");
