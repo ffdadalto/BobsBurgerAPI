@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
             telefoneCelEmpresa: { type: DataTypes.STRING },
             horarioAtendimentoInicial: { type: DataTypes.STRING },
             horarioAtendimentoFinal: { type: DataTypes.STRING },
-            sobreEmpresa: { type: DataTypes.STRING },
+            sobreEmpresa: { type: DataTypes.STRING(4000) },
 
             ativo: { type: DataTypes.BOOLEAN },
             dataCadastro: { type: DataTypes.DATE }

@@ -6,8 +6,8 @@ module.exports = app => {
     // // Obter todos os configuracaos inativos
     // router.get("/inativo", configuracao.findAllInactive);
 
-    // // Obter todos os configuracaos ativos
-    // router.get("/ativo", configuracao.findAllActive);
+    // Obter todos os configuracaos ativos
+    router.get("/sobre", configuracao.getSobre);
 
     // // Obter um configuracao a partir do id
     // router.get("/:id", configuracao.findOne);

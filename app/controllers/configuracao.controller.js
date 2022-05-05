@@ -98,76 +98,17 @@ exports.update = (req, res) => {
         });
 };
 
-// // Deleta um configuracao pelo id passado por parametro
-// exports.delete = (req, res) => {
-//     const idsExclusao = req.params.id;
-//     Configuracao.destroy({
-//             where: { id: idsExclusao },
-//         })
-//         .then(() => {
-//             res.send({
-//                 message: "Configuracao excluido com sucesso!",
-//             });
-//         })
-//         .catch((err) => {
-//             res.status(500).send({
-//                 message: `Não foi possível excluir o configuracao id=${idsExclusao}. Erro: ${err}`
-//             });
-//         });
-// };
-
-// // Deleta todos os configuracaos
-// exports.deleteAll = (req, res) => {
-//     const ids = req.body;
-//     Configuracao.destroy({
-//             where: {
-//                 id: ids
-//             },
-//             // truncate: false,
-//         })
-//         .then((nums) => {
-//             res.send({ message: `${nums} Configuracaos foram deletados com sucesso!` });
-//         })
-//         .catch((err) => {
-//             res.status(500).send({
-//                 message: err.message ||
-//                     "Algum erro ocorreu enquanto deletavamos todos os configuracaos.",
-//             });
-//         });
-// };
-
-// // Retorna todos os configuracaos inativos
-// exports.findAllInactive = (req, res) => {
-//     Configuracao.findAll({
-//             where: { ativo: false },
-//             order: [
-//                 ['id', 'DESC'], // Ordena pelo nome descendente
-//             ],
-//         })
-//         .then(data => {
-//             res.send(data);
-//         })
-//         .catch(err => {
-//             res.status(500).send({
-//                 message: err.message || "Ocorreu algum erro enquanto tentavamos obter os configuracaos inativos."
-//             });
-//         });
-// };
-
-// // Retorna todos os configuracaos ativos
-// exports.findAllActive = (req, res) => {
-//     Configuracao.findAll({
-//             where: { ativo: true },
-//             order: [
-//                 ['id', 'DESC'], // Ordena pelo nome descendente
-//             ],
-//         })
-//         .then(data => {
-//             res.send(data);
-//         })
-//         .catch(err => {
-//             res.status(500).send({
-//                 message: err.message || "Ocorreu algum erro enquanto tentavamos obter os configuracaos ativos."
-//             });
-//         });
-// };
+exports.getSobre = (req, res) => {
+    Configuracao.findAll({
+            attributes: ['sobreEmpresa']
+        })
+        .then((data) => {
+            res.send(data);
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message: err.message ||
+                    "Ocorreu algum erro enquanto tentavamos obter os dados",
+            });
+        });
+};
