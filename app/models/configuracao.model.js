@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const db = require(".");
+const db = require("../models");
 
 module.exports = (sequelize, Sequelize) => {
     const Configuracao = sequelize.define(
@@ -11,13 +11,11 @@ module.exports = (sequelize, Sequelize) => {
             cidadeEmpresa: { type: DataTypes.STRING, allowNull: false },
             ufEmpresa: { type: DataTypes.STRING, allowNull: false },
             cepEmpresa: { type: DataTypes.STRING },
-            telefoneEmpresa: { type: DataTypes.STRING },
+            telefoneFixoEmpresa: { type: DataTypes.STRING },
+            telefoneCelEmpresa: { type: DataTypes.STRING },
             horarioAtendimentoInicial: { type: DataTypes.STRING },
             horarioAtendimentoFinal: { type: DataTypes.STRING },
             sobreEmpresa: { type: DataTypes.STRING },
-
-
-
 
             ativo: { type: DataTypes.BOOLEAN },
             dataCadastro: { type: DataTypes.DATE }

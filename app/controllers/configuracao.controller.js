@@ -15,14 +15,15 @@ exports.create = (req, res) => {
 
     // Cria um configuracao
     const configuracao = {
-        nome: req.body.nomeEmpresa,
+        nomeEmpresa: req.body.nomeEmpresa,
         enderecoEmpresa: req.body.enderecoEmpresa,
         numeroEmpresa: req.body.numeroEmpresa,
         bairroEmpresa: req.body.bairroEmpresa,
         cidadeEmpresa: req.body.cidadeEmpresa,
         ufEmpresa: req.body.ufEmpresa,
         cepEmpresa: req.body.cepEmpresa,
-        telefoneEmpresa: req.body.telefoneEmpresa,
+        telefoneFixoEmpresa: req.body.telefoneFixoEmpresa,
+        telefoneCelEmpresa: req.body.telefoneCelEmpresa,
         horarioAtendimentoInicial: req.body.horarioAtendimentoInicial,
         horarioAtendimentoFinal: req.body.horarioAtendimentoFinal,
         sobreEmpresa: req.body.sobreEmpresa,
