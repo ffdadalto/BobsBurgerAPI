@@ -5,6 +5,7 @@ module.exports = (sequelize, Sequelize) => {
         "pedido", {
             numero: { type: DataTypes.STRING, allowNull: false },
             valorTotal: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
+            formaPagamento: { type: DataTypes.STRING },
             ativo: { type: DataTypes.BOOLEAN },
             dataCadastro: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
         }, {
