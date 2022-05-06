@@ -15,8 +15,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 require("./app/routes/pedido.routes")(app);
+require("./app/routes/situacao.routes")(app);
 require("./app/routes/item.routes")(app);
 require("./app/routes/cliente.routes")(app);
+require("./app/routes/formaPagamento.routes")(app);
 require("./app/routes/bairro.routes")(app);
 require("./app/routes/cidade.routes")(app);
 require("./app/routes/configuracao.routes")(app);

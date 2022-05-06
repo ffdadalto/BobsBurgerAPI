@@ -18,7 +18,9 @@ exports.create = (req, res) => {
     const pedido = {
         numero: req.body.numero,
         valorTotal: req.body.valorTotal,
+        formaPagamentoId: req.body.formaPagamentoId,
         clienteId: req.body.clienteId,
+        situacaoId: req.body.situacaoId,
         ativo: req.body.ativo,
         dataCadastro: utilitarios.dateTimeNow(),
     };
@@ -36,7 +38,13 @@ exports.create = (req, res) => {
 
 // Retorna todos os tutoriais do banco de dados
 exports.findAll = (req, res) => {
-    Pedido.findAll({ include: db.cliente })
+    Pedido.findAll({
+            include: { all: true }, // Trás todas as relações, inclusive as dos filhos
+            // include: { all: true, nested: true } // Trás todas as relações, inclusive as dos filhos
+            order: [
+                ['id', 'DESC'], // Ordena pelo nome descendente
+            ],
+        })
         .then((data) => {
             res.send(data);
         })
