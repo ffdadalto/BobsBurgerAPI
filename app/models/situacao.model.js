@@ -4,6 +4,7 @@ module.exports = (sequelize, Sequelize) => {
     const Situacao = sequelize.define(
         "situacao", {
             nome: { type: DataTypes.STRING, allowNull: false },
+            cor: { type: DataTypes.STRING },
             ativo: { type: DataTypes.BOOLEAN },
             dataCadastro: { type: DataTypes.DATE }
 

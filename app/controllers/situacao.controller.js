@@ -2,8 +2,6 @@ const db = require("../models");
 const utilitarios = require("../utilitarios/DateTimeNow");
 
 const Situacao = db.situacao;
-// const Op = db.Sequelize.Op
-const { Op } = require("sequelize");
 
 // Cria e salva uma nova Situacao
 exports.create = (req, res) => {
@@ -17,6 +15,7 @@ exports.create = (req, res) => {
     // Cria um situacao
     const situacao = {
         nome: req.body.nome,
+        cor: req.body.cor,
         ativo: req.body.ativo,
         dataCadastro: utilitarios.dateTimeNow(),
     };
