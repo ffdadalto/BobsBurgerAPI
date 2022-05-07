@@ -5,6 +5,7 @@ module.exports = (sequelize, Sequelize) => {
         "situacao", {
             nome: { type: DataTypes.STRING, allowNull: false },
             cor: { type: DataTypes.STRING },
+            ordem: { type: DataTypes.INTEGER },
             ativo: { type: DataTypes.BOOLEAN },
             dataCadastro: { type: DataTypes.DATE }
 
