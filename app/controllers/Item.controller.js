@@ -39,7 +39,7 @@ exports.findAll = (req, res) => {
     Item.findAll({
             // include: { all: true }, // trás somente o primeiro filho
             order: [
-                ['nome', 'ASC'], // Ordena pelo nome
+                ['id', 'DESC'], // Ordena pelo nome
             ],
         })
         .then((data) => {
