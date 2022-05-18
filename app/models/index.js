@@ -34,6 +34,7 @@ db.formaPagamento = require("./formaPagamento.model.js")(sequelizeInstance, Sequ
 db.bairro = require("./bairro.model.js")(sequelizeInstance, Sequelize);
 db.cidade = require("./cidade.model.js")(sequelizeInstance, Sequelize);
 db.configuracao = require("./configuracao.model.js")(sequelizeInstance, Sequelize);
+db.configuracao = require("./usuario.model.js")(sequelizeInstance, Sequelize);
 
 // Relação 1 pra muitos(Cliente e Pedidos)
 db.cliente.hasMany(db.pedido);
