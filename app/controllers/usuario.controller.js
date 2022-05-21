@@ -1,7 +1,12 @@
 const db = require("../models");
 const utilitarios = require("../utilitarios/DateTimeNow");
+const { QueryTypes } = require('sequelize');
 
 const Usuario = db.usuario;
+
+exports.login = (req, res) => {}
+
+
 
 // Cria e salva uma nova Usuario
 exports.create = (req, res) => {
@@ -33,7 +38,7 @@ exports.create = (req, res) => {
         });
 };
 
-// Retorna todos os usuaruis
+// Retorna todos os usuarios
 exports.findAll = (req, res) => {
     Usuario.findAll()
         .then((data) => {
